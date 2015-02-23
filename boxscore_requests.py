@@ -4,7 +4,18 @@ Created on Thu Feb 19 19:18:00 2015
 
 @author: choog_000
 """
+#Dashboard about Earth's satellites
+#Boxscore data: Accounting of man-made objects that have been or are in orbit. 
+#Derived from satellite catalog and grouped by country/organization.
 
+import os
+os.chdir('C:\Users\choog_000\Documents\GitHub\SpaceSatellitesDashboard')
+
+#make API request to Space-Track.org for boxscore data
+os.system('wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn&query=https://www.space-track.org/basicspacedata/query/class/boxscore" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -O boxscore')
+
+
+----------------------------------------------
 from urllib2 import Request, urlopen, URLError, urllib2
 import urllib2
 
@@ -60,23 +71,3 @@ except URLError, e:
     print 'Did not work. Received an error code:', e
 
 ------------------------------------------------
-import os
-os.chdir('C:\Users\choog_000\Documents\GitHub\SpaceSatellitesDashboard')
-os.system('wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn&query=https://www.space-track.org/basicspacedata/query/class/boxscore" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -O boxscore')
-
-os.system("wget http://www.google.com/")
-
-
-
-os.system("wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn&query=https://www.space-track.org/basicspacedata/query/class/boxscore" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -O boxscore")
-
-
-import requests, json
-
-#url = 'https://www.space-track.org/ajaxauth/login'
-#daAuth = requests.post(url,auth=('choogerheyde@gmail.com','DXd0Hh38SG4irCn'))
-#
-#print daAuth.json
-
-os.system('wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -olog')
-    
