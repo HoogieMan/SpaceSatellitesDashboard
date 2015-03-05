@@ -8,11 +8,25 @@ Created on Thu Feb 19 19:18:00 2015
 #Boxscore data: Accounting of man-made objects that have been or are in orbit. 
 #Derived from satellite catalog and grouped by country/organization.
 
-import os
+import os, json
 os.chdir('C:\Users\choog_000\Documents\GitHub\SpaceSatellitesDashboard')
 
-#make API request to Space-Track.org for boxscore data
-os.system('wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn&query=https://www.space-track.org/basicspacedata/query/class/boxscore" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -O boxscore')
+#make API request to Space-Track.org and store the results in a file
+os.system('wget  --post-data "identity=choogerheyde@gmail.com&password=DXd0Hh38SG4irCn&query=https://www.space-track.org/basicspacedata/query/class/boxscore/format/csv" --keep-session-cookies --save-cookies=cookies.txt https://www.space-track.org/ajaxauth/login -O boxscore')
+
+#read in the generated file for parsing
+daFile = open('boxscore', 'r')
+print daFile.read()
+
+data = json.load(daFile)
+daFile.close()
+
+print json.daFile
+
+csvFile = csv.writer(open('boxscore.csv','wb+'))
+
+for item in data:
+    csvFile.writerow([item['pk'],item['mode']] + item['fields'].values())
 
 
 ----------------------------------------------
